@@ -1,0 +1,23 @@
+{% extends 'header.html' %}
+{% block content %}
+
+    <div class="container">
+        {% load static %}
+        <form method="POST">
+        {% csrf_token %}
+        <br></br>
+        <div class="col s12 z-depth-6 card-panel">
+            <center><img src="{% static "images/pneumosono.jpg" %}" alt="My image" class="responsive-img valign profile-image-login"></center>
+            {{form.as_p}}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <button type="submit" class="btn waves-effect waves-light col s12 blue darken-1">Login</button>
+        </div>
+        </form>
+    </div>
+{% endblock %}

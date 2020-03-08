@@ -1,0 +1,48 @@
+{% extends 'header.html' %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container">
+    <h1 class="indigo-text text-darken-1">Exames Pneumosono</h1>
+    <h5 class="indigo-text text-darken-4">Logado como {{request.user}}</h5>
+    <h6 class="indigo-text text-darken-5">Logar como outro <a href="login/">paciente</a></h6>
+</div>
+    {% for ex in exames %}
+        {% if request.user == ex.patient %}
+            <div class="container">
+                <blockquote style="border-left: 5px solid">
+                    <h3>{{ex.title}}</h3>
+                    <h4>{{ex.patient}}</h4>
+                    <a style="font-size:x-large" href=/static/{{ex.filename}} download>
+                        Veja seu exame
+                    </a>
+                </blockquote>
+                
+            </div>
+            
+        {% endif %}
+    {% endfor %}
+<main>
+    <div class="container"></div>
+</main>
+
+<footer class="page-footer cyan lighten-2">
+    <div class="container">
+        <div class="row">
+        <div class="col l6 s12">
+            <h5 class="white-text">Se a página estiver vazia seus exames ainda não chegaram</h5>
+            <p class="grey-text text-lighten-4">Pneumosono.</p>
+        </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+ 
+{% else %}
+    <div class="container">
+        <h1>Faça login para ver seus exames</h1>
+        <h2>Clique <a href="login"> aqui</a> para se logar</h2>
+    </div>
+
+{% endif %}
+{% endblock %}
