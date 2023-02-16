@@ -7,19 +7,17 @@
     <h6 class="indigo-text text-darken-5">Logar como outro <a href="login/">paciente</a></h6>
 </div>
     {% for ex in exames %}
-        {% if request.user == ex.patient %}
-            <div class="container">
-                <blockquote style="border-left: 5px solid">
-                    <h3>{{ex.title}}</h3>
-                    <h4>{{ex.patient}}</h4>
-                    <a style="font-size:x-large" href=/static/{{ex.filename}} download>
-                        Veja seu exame
-                    </a>
-                </blockquote>
+        <div class="container">
+            <blockquote style="border-left: 5px solid">
+                <h3>{{ex.title}}</h3>
+                <h4>{{ex.filename}}</h4>
                 
-            </div>
+                <a style="font-size:x-large" href={{ex.exame_pdf}} download>
+                    Veja seu exame
+                </a>
+            </blockquote>
             
-        {% endif %}
+        </div>
     {% endfor %}
 <main>
     <div class="container"></div>

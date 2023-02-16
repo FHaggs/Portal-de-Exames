@@ -119,8 +119,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'main/static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 """
 STATIC_ROOT = '/www/portal/mysite/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/www/portal/mysite/media/'
 """
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

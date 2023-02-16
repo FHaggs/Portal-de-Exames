@@ -3,15 +3,20 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Exames
-from .models import Exames
+
+from django.contrib.auth.models import User
+
 # Create your views here.
 
 
 
 def homepage(request):
+    profile = User.objects.get(username=request.user.username)
+    mydata = Exames.objects.filter(patient=profile).values()
+
     return render(request = request,
                   template_name='home.html',
-                  context = {"exames":Exames.objects.all})
+                  context = {"exames":mydata})
 
 
 def login_rq(request):
